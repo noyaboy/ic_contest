@@ -2,3 +2,10 @@ log/
 *fsdb*
 csrc/
 ucli.key
+BSSLib.lib++/
+nWaveLog/
+novas.conf
+novas.rc
+signal.rc
+simv
+simv.daidir/
