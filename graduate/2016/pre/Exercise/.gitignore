@@ -10,3 +10,4 @@ signal.rc
 simv
 simv.daidir/
 vfastLog/
+*.log

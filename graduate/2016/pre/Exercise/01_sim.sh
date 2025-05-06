@@ -1,1 +1,1 @@
-vcs testfixture.v LBP.v -R -full64 -debug_access+all +v2k
+vcs testfixture.v LBP.v -R -full64 +fsdb+all -debug_access+all +v2k

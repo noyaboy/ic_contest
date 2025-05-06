@@ -1,7 +1,7 @@
 `timescale 1ns/10ps
 `define CYCLE      12.5          	  // Modify your clock period here
 `define SDFFILE    "./SYN/LBP_syn.sdf"	  // Modify your sdf file name
-`define End_CYCLE  4000              // Modify cycle times once your design need more cycle times!
+`define End_CYCLE  7000              // Modify cycle times once your design need more cycle times!
 
 `define PAT        "./pattern1.dat"    
 `define EXP        "./golden1.dat"     
@@ -49,8 +49,9 @@ initial	$readmemh (`EXP, exp_mem);
 always begin #(`CYCLE/2) clk = ~clk; end
 
 initial begin
-	$dumpfile("LBP.fsdb");
-	$dumpvars;
+	$fsdbDumpfile("LBP.fsdb");
+	$fsdbDumpvars;
+	$fsdbDumpMDA;
 end
 
 initial begin  // data input
