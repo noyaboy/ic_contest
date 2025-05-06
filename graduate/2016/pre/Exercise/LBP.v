@@ -29,14 +29,24 @@ output  [8      -1:0]   lbp_data;       //
 output  [1      -1:0]   finish;         //  Active-High
 //====================================================================
 
-reg     [8      -1:0]   gray_data_reg;
-
 reg     [14     -1:0]   gray_addr;
 reg     [1      -1:0]   gray_req;
 reg     [14     -1:0]   lbp_addr;
 reg     [1      -1:0]   lbp_valid;
 reg     [8      -1:0]   lbp_data;
 reg     [1      -1:0]   finish;
+
+reg     [8      -1:0]   gray_data_regfile_0   [126      -1:0];
+/*  00_1[000_0001]  ->  00_1[111_1110]
+    10_0[000_0001]  ->  10_0[111_1110]    */
+
+reg     [8      -1:0]   gray_data_regfile_1   [126      -1:0];
+/*  01_0[000_0001]  ->  01_0[111_1110]
+    10_1[000_0001]  ->  10_1[111_1110]    */
+
+reg     [8      -1:0]   gray_data_regfile_2   [126      -1:0];
+/*  01_1[000_0001]  ->  01_1[111_1110] 
+    11_0[000_0001]  ->  11_0[111_1110]    */
 
 
 wire    [14     -1:0]   gray_addr_nxt;
@@ -69,12 +79,6 @@ always@(posedge clk or posedge reset) begin
             lbp_valid       <=  1'd0;
             finish          <=  1'd0;
     end 
-end
-
-always@(posedge clk or posedge reset) begin
-    if (gray_req) begin
-        gray_data_reg   <= gray_data;
-    end
 end
 
 
